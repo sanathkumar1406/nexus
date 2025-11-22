@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nexusapp.controller.NotesController" spacing="12" stylesheets="/css/light.css" prefWidth="900.0" prefHeight="600.0">
+    <children>
+        <HBox spacing="10" alignment="CENTER_LEFT" VBox.vgrow="NEVER">
+            <children>
+                <Label text="Notes" styleClass="h1"/>
+                <Pane HBox.hgrow="ALWAYS"/>
+                <Button fx:id="addBtn" text="Add" onAction="#onAdd"/>
+                <Button fx:id="updateBtn" text="Update" onAction="#onUpdate"/>
+                <Button fx:id="deleteBtn" text="Delete" onAction="#onDelete"/>
+                <Button fx:id="attachBtn" text="Attach File" onAction="#onAttach"/>
+            </children>
+            <padding><Insets top="8" right="8" bottom="8" left="8"/></padding>
+        </HBox>
+
+        <GridPane hgap="10" vgap="10">
+            <columnConstraints>
+                <ColumnConstraints percentWidth="20"/>
+                <ColumnConstraints percentWidth="80"/>
+            </columnConstraints>
+            <children>
+                <Label text="Title" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <TextField fx:id="titleField" promptText="Enter note title" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                <Label text="Content" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <TextArea fx:id="contentArea" prefRowCount="6" promptText="Write your note..." GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                <Label text="Attachments" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                <VBox GridPane.columnIndex="1" GridPane.rowIndex="2" spacing="5">
+                    <HBox spacing="8">
+                        <Button fx:id="attachBtn" text="Attach PDF" onAction="#onAttach"/>
+                        <Button fx:id="removeAttachmentBtn" text="Remove Attachment" onAction="#onRemoveAttachment"/>
+                        <Button fx:id="openFileBtn" text="Open PDF" onAction="#onOpenFile" disable="true"/>
+                    </HBox>
+                    <Label fx:id="attachmentLabel" text="No file attached" style="-fx-text-fill: #666;"/>
+                </VBox>
+            </children>
+            <padding><Insets top="0" right="8" bottom="0" left="8"/></padding>
+        </GridPane>
+
+        <TableView fx:id="notesTable" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="colTitle" text="Title" prefWidth="200"/>
+                <TableColumn fx:id="colFile" text="File" prefWidth="150"/>
+                <TableColumn fx:id="colCreated" text="Created" prefWidth="150"/>
+                <TableColumn fx:id="colUpdated" text="Updated" prefWidth="150"/>
+            </columns>
+        </TableView>
+    </children>
+    <padding><Insets topRightBottomLeft="10"/></padding>
+</VBox>
+

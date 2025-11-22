@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nexusapp.controller.DashboardController">
+   <top>
+      <VBox spacing="10.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" spacing="20.0" styleClass="header">
+               <children>
+                  <Label text="Nexus" styleClass="app-title" />
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Button fx:id="themeToggleBtn" text="🌙" styleClass="theme-toggle-btn" onAction="#toggleTheme" />
+                  <Button fx:id="settingsBtn" text="⚙️" styleClass="settings-btn" onAction="#openSettings" />
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
+            </HBox>
+            <Separator />
+         </children>
+      </VBox>
+   </top>
+   <left>
+      <VBox spacing="10.0" styleClass="sidebar">
+         <children>
+            <Button fx:id="dashboardBtn" text="📊 Dashboard" styleClass="nav-btn active" onAction="#showDashboard" />
+            <Button fx:id="tasksBtn" text="✅ Tasks" styleClass="nav-btn" onAction="#showTasks" />
+            <Button fx:id="notesBtn" text="📝 Notes" styleClass="nav-btn" onAction="#showNotes" />
+            <Button fx:id="routineBtn" text="📅 Routine" styleClass="nav-btn" onAction="#showRoutine" />
+            <Button fx:id="timerBtn" text="⏱️ Timer" styleClass="nav-btn" onAction="#showTimer" />
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </VBox>
+   </left>
+   <center>
+      <StackPane fx:id="contentPane">
+         <children>
+            <VBox fx:id="dashboardContent" spacing="20.0" styleClass="dashboard-content">
+               <children>
+                  <HBox spacing="20.0">
+                     <children>
+                        <VBox fx:id="statsCard" styleClass="stats-card" spacing="10.0">
+                           <children>
+                              <Label text="📊 Study Statistics" styleClass="card-title" />
+                              <Label fx:id="totalStudyTime" text="Total Study Time: 0 hours" styleClass="stat-text" />
+                              <Label fx:id="sessionsCompleted" text="Sessions: 0" styleClass="stat-text" />
+                              <Label fx:id="avgSessionTime" text="Avg Session: 0 min" styleClass="stat-text" />
+                           </children>
+                           <padding>
+                              <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                           </padding>
+                        </VBox>
+                        <VBox fx:id="tasksCard" styleClass="stats-card" spacing="10.0">
+                           <children>
+                              <Label text="✅ Tasks Overview" styleClass="card-title" />
+                              <Label fx:id="pendingTasks" text="Pending: 0" styleClass="stat-text" />
+                              <Label fx:id="completedTasks" text="Completed: 0" styleClass="stat-text" />
+                              <Label fx:id="urgentTasks" text="Urgent: 0" styleClass="stat-text" />
+                           </children>
+                           <padding>
+                              <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                           </padding>
+                        </VBox>
+                        <VBox fx:id="notesCard" styleClass="stats-card" spacing="10.0">
+                           <children>
+                              <Label text="📝 Notes Summary" styleClass="card-title" />
+                              <Label fx:id="totalNotes" text="Total Notes: 0" styleClass="stat-text" />
+                              <Label fx:id="recentNotes" text="Recent: 0" styleClass="stat-text" />
+                              <Label fx:id="notesWithFiles" text="With Files: 0" styleClass="stat-text" />
+                           </children>
+                           <padding>
+                              <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <VBox spacing="15.0">
+                     <children>
+                        <Label text="📋 Recent Tasks" styleClass="section-title" />
+                        <TableView fx:id="recentTasksTable" styleClass="data-table">
+                           <columns>
+                              <TableColumn fx:id="taskTitleCol" text="Title" prefWidth="200.0" />
+                              <TableColumn fx:id="taskPriorityCol" text="Priority" prefWidth="100.0" />
+                              <TableColumn fx:id="taskDueDateCol" text="Due Date" prefWidth="150.0" />
+                              <TableColumn fx:id="taskStatusCol" text="Status" prefWidth="100.0" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </VBox>
+                  <VBox spacing="15.0">
+                     <children>
+                        <Label text="📝 Recent Notes" styleClass="section-title" />
+                        <TableView fx:id="recentNotesTable" styleClass="data-table">
+                           <columns>
+                              <TableColumn fx:id="noteTitleCol" text="Title" prefWidth="300.0" />
+                              <TableColumn fx:id="noteCreatedCol" text="Created" prefWidth="150.0" />
+                              <TableColumn fx:id="noteUpdatedCol" text="Updated" prefWidth="150.0" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </VBox>
+                  <VBox spacing="15.0">
+                     <children>
+                        <Label text="📅 Today's Routines" styleClass="section-title" />
+                        <VBox fx:id="todaysRoutinesContainer" spacing="8.0">
+                        </VBox>
+                     </children>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
+            </VBox>
+         </children>
+      </StackPane>
+   </center>
+</BorderPane>
+
+
